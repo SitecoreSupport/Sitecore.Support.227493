@@ -24,11 +24,11 @@ namespace Sitecore.Support.Form.Submit
         }
         Item planByState = this.GetPlanByState(iD);
         AutomationStateManager automationStateManager = Tracker.Current.Session.CreateAutomationStateManager();
-        if (planByState != null && !automationStateManager.IsInEngagementState(iD))
+        if (planByState != null && !automationStateManager.IsInEngagementPlan(planByState.ID))
         {
           automationStateManager.EnrollInEngagementPlan(planByState.ID, iD);
         }
-        if (automationStateManager.IsInEngagementState(iD))
+        if (automationStateManager.IsInEngagementPlan(planByState.ID))
         {
           return;
         }
